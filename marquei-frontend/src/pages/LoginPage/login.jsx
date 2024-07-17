@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from "react"
 import { supabase } from '../../lib/helper/supabaseClient'
 import { Auth } from '@supabase/auth-ui-react'
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { ThemeSupa } from "@supabase/auth-ui-shared"
 import { Helmet } from "react-helmet"
+import "./styleLogin.css"
 
 export function LoginPage() {
     const navigate = useNavigate()
@@ -34,32 +35,55 @@ export function LoginPage() {
     return (
         <div class="container text-center " id="login">
             <Helmet>
-                <title>Controle de vendas - Login</title>
+                <title>Marquei - Login</title>
             </Helmet>
-            <h1>Entrar</h1>
-            <Auth
-                supabaseClient={supabase}
-                localization={{
-                    variables: {
-                        sign_in: {
-                            email_label: '',
-                            email_input_placeholder: 'e-mail',
-                            password_input_placeholder: 'senha',
-                            password_label: '',
-                            button_label: 'Entrar'
+            <div className="cardLogin">
+                <h1>Marquei</h1>
+                <Auth
+                    supabaseClient={supabase}
+                    localization={{
+                        variables: {
+                            sign_in: {
+                                email_label: '',
+                                email_input_placeholder: 'Digite seu e-mail',
+                                password_input_placeholder: 'Digite sua senha',
+                                password_label: '',
+                                button_label: 'Entrar',
+                                social_provider_text: "Entrar com Google",
+                                loading_button_label: 'Entrando ...',
+                                link_text: 'Entrar'
+                            },
+                            sign_up: {
+                                email_label: '',
+                                email_input_placeholder: 'Digite seu e-mail',
+                                password_input_placeholder: 'Digite sua senha',
+                                password_label: '',
+                                button_label: 'Criar conta',
+                                social_provider_text: "Entrar com Google",
+                                loading_button_label: 'Entrando ...',
+                                link_text: 'Criar conta'
+                            },
+                            forgotten_password: {
+                                email_label: 'E-mail',
+                                email_input_placeholder: 'Digite seu e-mail',
+                                password_input_placeholder: 'Digite sua senha',
+                                password_label: '',
+                                button_label: 'Enviar instruções para recuperar conta',
+                                link_text: 'Esqueceu sua senha ?'
+                            }
                         },
-                    },
-                }}
-                appearance={{
-                    theme: ThemeSupa,
-                    className: {
-                        button: 'botaoLogin',
-                    }
-                }}
-                theme="dark"
-                providers={[]}
-                showLinks={false}
-            />
+                    }}
+                    appearance={{
+                        theme: ThemeSupa,
+                        className: {
+                            button: 'botaoLogin',
+                        }
+                    }}
+                    theme="dark"
+                    providers={["google"]}
+                    showLinks={true}
+                />
+            </div>
         </div>
     )
 }
