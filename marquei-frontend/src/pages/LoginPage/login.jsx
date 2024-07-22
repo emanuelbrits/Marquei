@@ -51,7 +51,7 @@ export function LoginPage() {
                                 button_label: 'Entrar',
                                 social_provider_text: "Entrar com Google",
                                 loading_button_label: 'Entrando ...',
-                                link_text: 'Entrar',
+                                link_text: 'Entrar'
                             },
                             sign_up: {
                                 email_label: '',
@@ -77,20 +77,11 @@ export function LoginPage() {
                         theme: ThemeSupa,
                         className: {
                             button: 'botaoLogin',
-                        },
-                        variables: {
-                            default: {
-                              colors: {
-                                brand: 'green',
-                                brandAccent: 'tomato',
-                              },
-                            },
-                          },
+                        }
                     }}
-
+                    theme="dark"
                     providers={["google"]}
                     showLinks={true}
-                    
                 />
             </div>
         </div>
